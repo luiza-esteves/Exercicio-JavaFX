@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="principalPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="803.0" prefWidth="1006.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="circulos.FXMLDocumentController">
+    <children>
+        <Button fx:id="botaoAdicionar" layoutX="152.0" layoutY="34.0" mnemonicParsing="false" onAction="#adicionarCirculo" prefHeight="58.0" prefWidth="145.0" style="-fx-border-color: black; -fx-border-radius: 6; -fx-background-color: #FFEFD5;" text="Adicionar círculo" textAlignment="CENTER" textFill="#181a39" textOverrun="CENTER_ELLIPSIS">
+            <font>
+                <Font name="Calibri Light" size="15.0" />
+            </font>
+        </Button>
+        <Button fx:id="botaoEditar" layoutX="411.0" layoutY="34.0" mnemonicParsing="false" onAction="#editarCirculo" prefHeight="58.0" prefWidth="145.0" style="-fx-border-color: black; -fx-border-radius: 6; -fx-background-color: #FFEFD5;" text="Alterar círculo" textAlignment="CENTER" textFill="#131522" textOverrun="CENTER_ELLIPSIS">
+            <font>
+                <Font name="Calibri Light" size="15.0" />
+            </font>
+        </Button>
+        <Pane fx:id="drawingPane" focusTraversable="true" layoutX="9.0" layoutY="117.0" prefHeight="625.0" prefWidth="988.0" style="-fx-background-color: #F0F8FF;" />
+        <Button fx:id="botaoExcluir" layoutX="653.0" layoutY="34.0" mnemonicParsing="false" onAction="#removerCirculo" prefHeight="58.0" prefWidth="145.0" style="-fx-border-color: black; -fx-border-radius: 6; -fx-background-color: #FFEFD5;" text="Remover círculo" textAlignment="CENTER" textFill="#0d0f26" textOverrun="CENTER_ELLIPSIS">
+            <font>
+                <Font name="Calibri Light" size="15.0" />
+            </font>
+        </Button>
+    </children>
+</Pane>
