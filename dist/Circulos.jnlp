@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Circulos.jar" size="9663" download="eager" />
+    <jar href="Circulos.jar" size="12247" download="eager" />
     <jar href="lib\javafx-swt.jar" size="37082" download="eager" />
     <jar href="lib\javafx.base.jar" size="757147" download="eager" />
     <jar href="lib\javafx.controls.jar" size="2599761" download="eager" />
