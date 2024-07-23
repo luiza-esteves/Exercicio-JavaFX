@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -38,10 +39,10 @@ public class FXMLDocumentController implements Initializable {
         configurarBotao(botaoEditar, "#FFEFD5", "#FF6347");
         configurarBotao(botaoExcluir, "#FFEFD5", "#FF6347");
 
-        drawingPane.setOnMouseClicked(evento -> {
+        drawingPane.setOnMouseClicked(event -> {
             boolean cliqueEmCirculo = false;
             for (Node node : drawingPane.getChildren()) {
-                if (node instanceof Circle && node.contains(evento.getX(), evento.getY())) {
+                if (node instanceof Circle && node.contains(event.getX(), event.getY())) {
                     cliqueEmCirculo = true;
                     break;
                 }
@@ -53,8 +54,26 @@ public class FXMLDocumentController implements Initializable {
             }
         });
 
-        drawingPane.addEventFilter(KeyEvent.KEY_PRESSED, this::onKeyPressed);
         drawingPane.setFocusTraversable(true);
+        drawingPane.requestFocus();
+ 
+        Scene scene = drawingPane.getScene();
+        if (scene != null) {
+            scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+                circleManager.moverCirculo(event.getCode());
+                event.consume();
+            });
+        } else {
+           
+            drawingPane.sceneProperty().addListener((observable, oldScene, newScene) -> {
+                if (newScene != null) {
+                    newScene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+                        circleManager.moverCirculo(event.getCode());
+                        event.consume();
+                    });
+                }
+            });
+        }
     }
 
     @FXML
@@ -85,10 +104,13 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void onKeyPressed(javafx.scene.input.KeyEvent event) {
+        event.consume();
+        event.consume();
         if (event.getCode() == KeyCode.UP || event.getCode() == KeyCode.DOWN
                 || event.getCode() == KeyCode.LEFT || event.getCode() == KeyCode.RIGHT) {
             circleManager.moverCirculo(event.getCode());
         }
+        event.consume();
     }
 
     private void configurarBotao(Button botao, String corNormal, String corDestaque) {
